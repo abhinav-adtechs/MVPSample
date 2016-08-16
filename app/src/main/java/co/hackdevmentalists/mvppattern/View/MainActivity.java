@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import co.hackdevmentalists.mvppattern.ApplicationInterfaces.RequiredViewOps;
+import co.hackdevmentalists.mvppattern.Model.TestModel;
+import co.hackdevmentalists.mvppattern.Presenter.MainActivityPresenter;
 import co.hackdevmentalists.mvppattern.R;
 
 public class MainActivity extends AppCompatActivity implements RequiredViewOps {
@@ -13,6 +15,14 @@ public class MainActivity extends AppCompatActivity implements RequiredViewOps {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setupMVP() ;
+    }
+
+    private void setupMVP() {
+        MainActivityPresenter mainActivityPresenter = new MainActivityPresenter(this) ;
+        TestModel testModel = new TestModel(mainActivityPresenter) ;
+
     }
 
     @Override
@@ -24,4 +34,6 @@ public class MainActivity extends AppCompatActivity implements RequiredViewOps {
     public Context getActivityContext() {
         return this;
     }
+
+
 }
